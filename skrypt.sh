@@ -1,8 +1,15 @@
 #!/bin/bash
 
-if [[ $1 == "--date" ]]; then
+function show_help() {
+    echo "Available options:"
+    echo "--date, -d   : Display current date"
+    echo "--logs [n], -l [n]  : Create [n] log files (default 100)"
+    echo "--help, -h   : Show this help message"
+}
+
+if [[ $1 == "--date" || $1 == "-d" ]]; then
     date
-elif [[ $1 == "--logs" ]]; then
+elif [[ $1 == "--logs" || $1 == "-l" ]]; then
     num_files=${2:-100}
     for ((i=1; i<=num_files; i++))
     do
@@ -10,9 +17,6 @@ elif [[ $1 == "--logs" ]]; then
         echo "Script name: skrypt.sh" >> log_$i.txt
         echo "Date: $(date)" >> log_$i.txt
     done
-elif [[ $1 == "--help" ]]; then
-    echo "Available options:"
-    echo "--date      : Display current date"
-    echo "--logs [n]  : Create [n] log files (default 100)"
-    echo "--help      : Show this help message"
+elif [[ $1 == "--help" || $1 == "-h" ]]; then
+    show_help
 fi
