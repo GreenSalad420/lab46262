@@ -10,4 +10,9 @@ elif [[ $1 == "--logs" ]]; then
         echo "Script name: skrypt.sh" >> log_$i.txt
         echo "Date: $(date)" >> log_$i.txt
     done
+elif [[ $1 == "--help" ]]; then
+    echo "Available options:"
+    echo "--date      : Display current date"
+    echo "--logs [n]  : Create [n] log files (default 100)"
+    echo "--help      : Show this help message"
 fi
